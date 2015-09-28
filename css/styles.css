@@ -1,0 +1,9 @@
+html {
+   background-color: rgb(116, 185, 139);
+   font-family: serif;
+}
+#godmode {
+   text-align: center;
+   color: cadetblue;
+   display: none;
+}
