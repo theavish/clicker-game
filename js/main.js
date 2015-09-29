@@ -100,12 +100,12 @@ $(document).ready(function() {
       $('.spinning-coin-image').last().css({"position": "absolute", "top": top, "left": left});
    }
 
-   setInterval(showCoin, 2000);
+   //setInterval(showCoin, 2000);
 
    $('.container').on('click', '.spinning-coin-image', function(){
-      inventory++;
+      inventory += clickMultiplier * 100;
       dispInventory();
-      $(this).hide();
+      $(this).remove();
    });
 
 });
