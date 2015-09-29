@@ -57,7 +57,7 @@ $(document).ready(function() {
    setInterval(autoClick, 1000);
 
    /**** Store Functions ****/
-   $('.increase-multiplier').click(function() {
+   $('.increase-multiplier').on('click', function() {
       if (inventory >= costClickMultiplier) {
          inventory -= costClickMultiplier;
          clickMultiplier += 1;
@@ -68,7 +68,7 @@ $(document).ready(function() {
       }
    });
 
-   $('.auto-click-1').click(function() {
+   $('.auto-click-1').on('click', function() {
       if (inventory >= costAutoClick1) {
          inventory -= costAutoClick1;
          hasAutoClick1 = true;
@@ -94,13 +94,29 @@ $(document).ready(function() {
       return result;
    }
    function showCoin() {
-      $(".container").append('<img class="spinning-coin-image" src="img/coin-spinning-transparent.gif">');
-      var left = generateRandomWidth();
-      var top = generateRandomHeight();
-      $('.spinning-coin-image').last().css({"position": "absolute", "top": top, "left": left});
+      var coinCount = $('.coins').children().length;
+      if (coinCount < 1) {
+         $(".coins").append('<img class="spinning-coin-image" height="50px" width="50px" src="img/coin-spinning-transparent.gif">');
+         var left = generateRandomWidth();
+         var top = generateRandomHeight();
+         $('.spinning-coin-image').last().css({"position": "absolute", "top": top, "left": left});
+      }
    }
 
-   //setInterval(showCoin, 2000);
+   var timer = 0;
+   setInterval(function() {
+      timer++;
+      if (timer >= 5) {
+         $('.spinning-coin-image').remove();
+         timer = 0;
+      }
+   }, 1000);
+   var randomCoinTimer = function() {
+      var time = 0;
+      time = /* Random number function */;
+      return time;
+   };
+   setInterval(showCoin, randomCoinTimer);
 
    $('.container').on('click', '.spinning-coin-image', function(){
       inventory += clickMultiplier * 100;
